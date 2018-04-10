@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>上报事件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="FONTS/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="CSS/warn.css">
+    <style>
+     .abnormalDes .active{ background: url(Images/ok.png) no-repeat; background-size: cover;}
+    </style>
+</head>
+
+<body>
+  <section class="ownerWrite">
+    <div class="abnormalDes">
+         <h2>异常情况描述</h2>
+         <textarea> </textarea>
+         <div class="camera"></div>
+         <dl>
+             <dt><em></em><span>快速选择</span><em>此项为必选！</em></dt>
+             <dd><em></em><span>烟感探测</span></dd>
+             <dd><em></em><span>井盖丢失</span></dd>
+             <dd><em></em><span>高空抛物</span></dd>
+         </dl>
+    </div>
+    <div class="perInfo">
+        <h2>提交人信息</h2>
+        <input type="text" placeholder="请输入您的称呼">
+        <input type="text" placeholder="请输入您的联系方式">
+    </div>
+    <div class="submit">
+        <span>放弃提交</span>
+        <span class="sub">提交上报</span>
+    </div>
+  </section>
+  <div class="pop">
+     <p>上报成功</p>
+  </div>
+</body>
+<script src="JS/jquery-2.1.3.min.js"></script>
+<script src="JS/warn.js"></script>
+</html>

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>小区介绍</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" href="FONTS/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="CSS/warn.css">
+
+	</head>
+
+	<body>
+
+		<!-- 业主进入 -->
+		<section class="tab ownerWran" style="display:none">
+
+			<a class="applyBtn" href="OwnerWrite.html"></a>
+			<div class="prompt">
+				<p>发现异常情况？</p>
+				<p>欢迎点击上方按钮提交上报</p>
+			</div>
+		</section>
+
+		<!-- 小区介绍 -->
+		<section class="tab areaIntro">
+			<div class="areaBanner">
+				<p>西三小区竣工于1982年，小区合作物业为“南码头物业”，总建筑面积为25000平方米，绿化率占35%；小区内有停车位200个。</p>
+			</div>
+			<dl class="infoList">
+				<dt><span>小区活动设施(21)</span><i class="fa fa-chevron-down fa-2x"></i></dt>
+				<dd><span>台球室(18)</span><i class="fa fa-chevron-right fa-2x"></i></dd>
+				<dd><span>羽毛球场地(3)</span><i class="fa fa-chevron-right fa-2x"></i></dd>
+			</dl>
+			<dl class="infoList">
+				<dt><span>井盖(84)</span><i class="fa fa-chevron-down fa-2x"></i></dt>
+				<dd><span>南门(20)</span><i class="fa fa-chevron-right fa-2x"></i></dd>
+				<dd><span>北门(22)</span><i class="fa fa-chevron-right fa-2x"></i></dd>
+				<dd><span>北门(20)</span><i class="fa fa-chevron-right fa-2x"></i></dd>
+				<dd><span>北门(22)</span><i class="fa fa-chevron-right fa-2x"></i></dd>
+			</dl>
+		</section>
+
+		<footer>
+            <ul>
+                <li style="width:50%" onclick="window.location.href='index.html'"><em>社区动态</em></li>
+                <li style="width:50%"><em class="active">控制台</em></li>
+            </ul>
+
+            <div style="display:none;width:30%;background-color:#fff;position:absolute;z-index:200;top:-2.5rem;right:.8rem;" align="center" id="showMenu">
+                <div style="border-bottom:1px solid #000;" onclick="window.location.href='AlertSummary.html'">告警管理</div>
+                <div style="border-bottom:1px solid #000;" onclick="window.location.href='Alert.html'">告警列表</div>
+                <div style="border-bottom:1px solid #000;" onclick="window.location.href='WorkorderCreator.html'">上报情况</div>
+            </div>
+			<!--<ul>
+				<li><span class="icon"><img src="Images/footer-icon1.png"/></span><em>控制台</em></li>
+				<li><span class="icon"><img src="Images/footer-icon2-on.png"/></span><em class="active">小区介绍</em></li>
+			</ul>-->
+		</footer>
+
+	</body>
+	<script src="JS/jquery-2.1.3.min.js"></script>
+	<script src="JS/warn.js"></script>
+
+</html>

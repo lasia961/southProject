@@ -1,0 +1,144 @@
+/* reset */
+*{ margin: 0; padding: 0; }
+*html { background-image: url(about:blank); background-attachment: fixed; }
+h1, h2, h3, h4, h5 { font-weight: normal; }
+em { font-style: normal; }
+li { list-style: none; }
+a { text-decoration: none; outline: none; blr: expression(this.onFocus=this.blur()); }
+img { border: none; vertical-align: top; }
+table { border-collapse: collapse; }
+input, textarea, select { outline: none; background-color: #fff; border:0; }
+textarea { resize: none; overflow: auto; }
+body {font-family:Tahoma,Arial,Roboto,Droid Sans,Helvetica Neue,Droid Sans Fallback,Heiti SC,sans-self; color: #000; background-color: #f8f8f8;}
+/* public */
+.hide { display: block; font-size: 0; line-height: 0; text-indent: -999px; overflow: hidden; }
+.clear { zoom: 1; }
+.clear:after { content: ''; display: block; clear: both; }
+.fl { float: left; _display: inline; }
+.fr { float: right; _display: inline; }
+/*content*/
+  /*小区介绍*/
+        .areaBanner {width: 100%; height: 3.6rem; background: url(../Images/banner.png) #f8f8f8  center top no-repeat; background-size: cover; overflow: hidden; position: relative;}
+        .areaBanner p{line-height: .3rem;  font-size: .19rem; color: #fff; padding: .16rem .2rem; position: absolute; bottom: 0; background-color:rgba(0,0,0,.2);}
+        .infoList{width: 100%; font-size: .22rem}
+        .infoList dt, .infoList dd{height: .8rem; line-height: .8rem; padding-left: .3rem; overflow: hidden; background: #fff;}
+        .infoList dd{background: #f8f8f8; padding-left: .4rem;}
+        .infoList dt i, .infoList dd i { float:right; margin:.14rem .14rem 0; -webkit-text-stroke: .03rem #fff; color: #c2c2c2; }
+        .infoList dd i {-webkit-text-stroke: .03rem #f8f8f8;}
+       /*footer*/
+        footer{position: fixed; bottom:0; width: 100%; background: #fafaff; border-top: 1px solid #d5d5d5;}
+        footer ul{display: flex; flex-direction: row;}
+        footer li{width: 50%; height:.94rem; flex:auto; text-align: center;}
+        footer li span{display:block; width: .5rem; height: .5rem;  font-size: .24rem; margin: .1rem auto 0; }
+        footer li em{display: block; font-size: .35rem; color: #7e7e7e;line-height: .8rem;}
+        footer li img{width: 100%;}
+        footer .active{color:#2e93ff;}
+
+            footer div {
+                display: block;
+                font-size: .35rem;
+                color: #7e7e7e;
+                line-height: .8rem;
+            }
+
+        /*个人中心*/
+        .perCenter h2{width: 100%; height: .8rem; line-height: .8rem; font-size: .3rem; background: #ebebeb; text-align: center;}
+        .perHeader{padding: .46rem 0 .6rem;}
+        .perHeader .pic{width: 1.8rem; height: 1.8rem; border-radius: 50%; background: #ebebeb; margin: 0 auto;}
+        .perHeader p{width:100%; height: .32rem; line-height: .32rem; text-align: center;  font-size: .2rem; border-radius: 6px;}
+        .perHeader span{background:#ebebeb; padding: .1rem; border-radius: .08rem;}
+         /*业主进入*/
+         .ownerWran .applyBtn{display:block; width: 2.56rem; height: 2.56rem; background: url(../Images/applyBtn.png) no-repeat;  background-size: cover; margin: 2.6rem auto 0; } 
+         .ownerWran .prompt{margin-top: .8rem; font-size: .24rem; text-align: center; height: .3rem; line-height: .3rem;}
+         /*控制台*/
+        .controlWrap .nav{width:100%; position: fixed; top: 0; height: .8rem; line-height: .78rem; font-size: .24rem; overflow: hidden; background: #fff; border-bottom: 1px solid #999; box-shadow: 0 2px 5px #f0f0f0; z-index: 999;}
+        .controlWrap .nav li{ width: 33.333%; float: left; text-align: center; color: #777 }
+        .controlWrap .nav li span{display: inline-block; padding: 0 .2rem;}
+        .controlWrap .nav .cur{color: #1687ff; border-bottom: .02rem solid #1687ff;}
+        .taskList{margin-top: 1.05rem; display: none;}
+        .taskList li{overflow: hidden;  position: relative; width: 7.06rem; height: 1.26rem; border-radius: .1rem; background: #fff; margin: 0 auto .2rem; border-right: .04rem solid #1687ff;   box-shadow: -.02rem 0 .2rem rgba(64,156,255,.5);}
+        .taskList li img{display: block; width:.64rem; height: .64rem; padding: .31rem .26rem 0; float: left;}
+        .taskList li .info{float: left; padding-top: .33rem; width: 83%;}
+        .taskList li .info p{font-size: .24rem; height: .3rem; line-height: .3rem; color: #333; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+        .taskList li .info p:nth-of-type(2){width:74%;}
+        .taskList li .info p:last-child{font-size: .2rem; height: .3rem; line-height: .3rem; color: #ccc; }
+        .taskList li .info span{margin-right: .05rem;}
+        .taskList li .btn{width: 1.2rem; height: .46rem; line-height: .46rem; text-align: center; color: #333; font-size: .2rem; border-radius: .1rem; border:1px solid #005bff; position: absolute; bottom: .1rem; right: .2rem;}
+        .taskList .yellow{border-right: .04rem solid #ff9b41;}
+        .taskList .red{border-right: .04rem solid #ff5853;}
+        .taskList a{display: block;}
+        .controlWrap .notext{font-size: .24rem; text-align: center; margin-top: .4rem; color: #797979;}
+        .controlLeader .nav li{width: 33.333%; float: left; text-align: center; color: #777;}
+        .controlLeader .nav .cur{color: #005bff;}
+        .controlLeader .pic{ width: 5.76rem; height: 4.76rem;    margin: 1rem auto 0;}
+        .mask,.mask1{position: fixed; top: 0; left: 0; z-index: 9;  width: 100%;  height: 100%;  display: none; background: rgba(0,0,0,0.4);}
+        .leaderList{display: none;}
+        .leaderList {font-size: .24rem; color:#ccc; position: absolute; top:.8rem; z-index: 999; background: #fff; width: 100%;}
+        .leaderList li{height: .76rem; line-height: .76rem; border-bottom: 1px solid #ccc; text-indent: .2rem; }
+        .leaderList li:first-child{border-top:.02rem solid #ccc;}
+        .taskList1-1,.taskList1-2,.taskList1-3,.taskList2-1,.taskList2-2,.taskList2-3,.warnDate{padding-top: 1rem;}
+        .warnDate .date{font-size: .2rem; text-indent: .2rem;}
+        
+       .ownerWrite .abnormalDes, .ownerWrite .perInfo{background: #fff; margin: .2rem; border-radius: 5px; padding: 0 .2rem;}
+       .abnormalDes h2{height: .6rem; line-height: .6rem; font-size: .28rem; text-indent: .2rem;}
+       .abnormalDes textarea{width:6.7rem; height:2.3rem; background: #f8f8f8; border-radius: .1rem;}
+       .abnormalDes .camera{width:.49rem; height: .48rem; background: url(../Images/camera.png) no-repeat; background-size: cover; }
+       .abnormalDes  dt{height:.48rem; line-height: .48rem;  font-size: .28rem;}
+       .abnormalDes  dt span{margin-right: .3rem}
+       .abnormalDes  dt em{color: #ff1930;}
+       .abnormalDes dd{height: .5rem; line-height: .48rem; font-size: .24rem; color: #999;}
+       .abnormalDes dd em{display: inline-block; width: .24rem; height: .24rem;  margin-right: .14rem;  border-radius: 50%; border: 1px solid #ccc; position: relative; top: .03rem; }
+       .abnormalDes .active{ background: url(Images/ok.png) no-repeat; background-size: cover;}
+       .ownerWrite .perInfo h2{height: .6rem; line-height: .6rem; font-size: .28rem; text-indent: .2rem;}
+       .ownerWrite .perInfo input{display:block; margin-bottom:.2rem; width: 6.7rem; height: .54rem; line-height: .54rem; background: #f8f8f8; border-radius: .1rem; font-size: .2rem; text-indent: .2rem; color:#999;}
+       .ownerWrite .perInfo{padding: .14rem .2rem .2rem;}
+       .ownerWrite .submit {text-align: center; margin-top: 1.5rem;}
+       .ownerWrite .submit span{display:inline-block; width: 1.5rem; height: .5rem; line-height: .5rem; border-radius: .1rem; text-align: center; font-size: .2rem; background: #fff; border:1px solid #777; color: #777;}
+       .ownerWrite .submit span:last-child{background: #1687ff; color: #fff; border:1px solid #1687ff;}
+       .pop{width: 5.4rem; height: 2.4rem; position: fixed; top: 50%; z-index: 999; margin-top: -1.2rem; margin-left: 1.05rem;  background: #fff; display: none;}
+       .pop p{width:3.6rem; height:.8rem; line-height: .8rem; color: #fff;   font-size: .3rem; margin: 0 auto; background: #7c8389; border-radius: .2rem; text-align: center; margin-top: .8rem;  }
+       
+      .warnDes{width: 6.66rem; margin:.2rem auto 0; border-radius: .1rem; padding: .2rem; display: none;}
+      .warnDes dl{background: #fff;  padding: .25rem; margin-bottom: .2rem;}
+      .warnDes dt{height: .3rem; line-height: .3rem; font-size: .28rem; color: #333; border-left: .01rem solid #005bff; text-indent: .1rem; margin-bottom: .3rem; }
+      .warnDes dd em{color: #777; display: inline-block; width: 1.5rem;}
+      .warnDes dd.clear p{width: 74%; overflow: auto; white-space:normal;}
+      .warnDes .tel{display:inline-block;  width: .32rem; height: .33rem; background: url(../Images/call.png) center; background-size: cover; margin-left: .1rem; position: relative; top: .06rem;}
+      .warnDes .warnDesForm dl:nth-of-type(1){margin-bottom: 0; padding-bottom: 0;}
+      .warnDes .warnDesForm dl:nth-of-type(1) dd{float: left;}
+      .warnDes .warnDesForm dd{width: 1.5rem; height: .48rem; line-height: .48rem; border-radius: 6px; text-align: center; font-size: .2rem; color: #333; border: 1px solid #777; margin-right: .2rem; padding: 0 .1rem;} 
+      .warnDes .warnDesForm dd:nth-of-type(1), .warnDes .warnDesForm dd:nth-of-type(4){margin-left: .3rem;}
+      .warnDes .warnDesForm .on{background: #93cb60; color: #fff;}
+      .warnDesForm dt em{font-size: .2rem; color: #ff3d51; margin-left: .3rem;}
+      .warnDes .warnDesForm dd.text{width: 5.6rem; border: 0; margin-left: 0; height: 2.4rem; padding-bottom: .2rem;}
+      .warnDes .warnDesForm textarea{width: 5.6rem; height: 2rem; line-height: .28rem; background: #f8f8f8; border-radius: 6px; border: none; padding: .2rem; font-size: .2rem; color: #8e8e8e;}
+      .warnDes .warnDesForm .submitWrap{margin-top: .4rem; padding-bottom: 1rem;}
+      .warnDes .warnDesForm .submitWrap .blue{color: #fff; background: #1687ff;}
+      .warnDesForm .camera{border: none; opacity: 0;}
+      .upload{
+            width: .49rem;
+            height: .48rem;
+            display: block;
+            background: url(../Images/camera.png) no-repeat; background-size: cover;
+           
+           
+            
+        }
+     /* .warnDes .warnDesForm .submitWrap span:first-child{margin: 0 .9rem 0 1.3rem; border:1px solid #777;}*/
+      .warnDes .warnDesForm .submitWrap span{display: block; width: 100%; height: .8rem; margin: 0 auto; line-height: .8rem; font-size: .28rem; text-align: center; background: #fff; border-radius: .1rem;}
+      /*报警级别*/
+      .type1{ border-right: .04rem solid #1687ff; }
+      .type2{ border-right: .04rem solid #ff9b41; }
+      .type3{  border-right: .04rem solid #ff162e; }
+      
+      .warnResult{width: 6.66rem; margin:.2rem auto 0; border-radius: .1rem; background: #fff; border-right: .04rem solid #ff162e; padding: .2rem;}
+      .warnDes dt, .warnResult{height: .3rem; line-height: .3rem; font-size: .28rem; color: #333; border-left: .01rem solid #005bff; text-indent: .1rem; margin-bottom: .3rem;}
+      .warnDes dd{font-size: .26rem; margin-bottom: .3rem; color: #333; line-height: .33rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+      .warnDes dd a{color: #333;}
+      .warnDes dd em{color: #777; display: inline-block; width: 1.5rem;}
+      .warnDes .tel{display:inline-block;  width: .32rem; height: .33rem; background: url(../Images/call.png) center; background-size: cover; margin-left: .1rem; position: relative; top: .06rem;}
+      .warnResult{margin-top: .2rem; height: auto;}
+      .warnResult h2{font-size: .28rem; height: .3rem; line-height: .3rem;  border-left: .01rem solid #005bff; text-indent: .1rem; margin-bottom: .3rem; }
+      .warnResult p{color:#777; margin-top: .2rem; line-height: .4rem;}
+      .warnResult img{width: 1.28rem; height: 1.28rem; margin-bottom: .3rem;}
+      .warnResult .ok{width: .24rem; height: .24rem; margin-right: .2rem; position: relative; top:.08rem;}

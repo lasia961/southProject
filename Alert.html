@@ -1,0 +1,468 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>告警汇总</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="FONTS/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="CSS/warn.css">
+
+</head>
+
+<body>
+
+    <!-- 控制台 -->
+    <section class="tab controlWrap">
+        <ul class="nav">
+            <li>
+                <span class="cur" id="0">待处理</span>
+            </li>
+            <li>
+                <span id="2">处理中</span>
+            </li>
+            <li>
+                <span id="1">处理完毕</span>
+            </li>
+        </ul>
+        <ul class="taskList" style="display: block;">
+            <!--<li>
+                    <a href="AlertDetail.html">
+                        <img src="Images/elevator.png" alt="">
+                        <div class="info">
+                            <p>南码头家园 (近南门)</p>
+                            <p>
+                                <span>ID:20180109</span>
+                                <em>13:00:59</em>
+                            </p>
+                        </div>
+                        <span class="btn">查看详情</span>
+                    </a>
+                </li>
+                <li class="yellow">
+                    <a href="AlertDetail.html">
+                        <img src="Images/old.png" alt="">
+                        <div class="info">
+                            <p>南码头家园 (近南门)</p>
+                            <p>
+                                <span>ID:20180109</span>
+                                <em>13:00:59</em>
+                            </p>
+                        </div>
+                        <span class="btn">查看详情</span>
+                    </a>
+                </li>
+                <li class="red">
+                    <a href="AlertDetail.html">
+                        <img src="Images/electricCar.png" alt="">
+                        <div class="info">
+                            <p>南码头家园 (近南门)</p>
+                            <p>
+                                <span>ID:20180109</span>
+                                <em>13:00:59</em>
+                            </p>
+                        </div>
+                        <span class="btn">查看详情</span>
+                    </a>
+                </li>-->
+
+        </ul>
+        <!--
+        <ul class="taskList"></ul>
+        <ul class="taskList"></ul>
+        -->
+        <p class="notext">没有更多了~</p>
+
+    </section>
+
+    <!-- 小区介绍 -->
+    <section class="tab areaIntro" style="display:none">
+        <div class="areaBanner">
+            <p>西三小区竣工于1982年，小区合作物业为“南码头物业”，总建筑面积为25000平方米，绿化率占35%；小区内有停车位200个。</p>
+        </div>
+        <dl class="infoList">
+            <dt>
+                <span>小区活动设施(21)</span>
+                <i class="fa fa-chevron-down fa-2x"></i>
+            </dt>
+            <dd>
+                <span>台球室(18)</span>
+                <i class="fa fa-chevron-right fa-2x"></i>
+            </dd>
+            <dd>
+                <span>羽毛球场地(3)</span>
+                <i class="fa fa-chevron-right fa-2x"></i>
+            </dd>
+        </dl>
+        <dl class="infoList">
+            <dt>
+                <span>井盖(84)</span>
+                <i class="fa fa-chevron-down fa-2x"></i>
+            </dt>
+            <dd>
+                <span>南门(20)</span>
+                <i class="fa fa-chevron-right fa-2x"></i>
+            </dd>
+            <dd>
+                <span>北门(22)</span>
+                <i class="fa fa-chevron-right fa-2x"></i>
+            </dd>
+            <dd>
+                <span>北门(20)</span>
+                <i class="fa fa-chevron-right fa-2x"></i>
+            </dd>
+            <dd>
+                <span>北门(22)</span>
+                <i class="fa fa-chevron-right fa-2x"></i>
+            </dd>
+        </dl>
+    </section>
+    <section class="warnDes">
+        <div class="con"></div>
+        <!--<dl>
+                <dt>告警详情</dt>
+                <dd><em>所属小区：</em><span>西三小区</span></dd>
+                <dd><em>告警ID：</em><span>20180109</span></dd>
+                <dd><em>告警时间：</em><span>20180109 13：00：59</span></dd>
+                <dd><em>告警类型：</em><span>烟雾告警</span></dd>
+                <dd><em>告警级别：</em><span id="warnType-span">--</span></dd>
+                <dd><em>告警内容：</em><span>小区南门左侧03号602房间产生烟雾告警</span></dd>
+            </dl>
+            <dl>
+                <dt>业主信息</dt>
+                <dd><em>业主姓名：</em><span>王先生</span></dd>
+                <dd><em>联系方式：</em><span>13800138000</span><i class="tel"></i></dd>
+            </dl>-->
+        <div class="warnDesForm">
+            <dl class="select clear">
+                <dt>
+                    <span>快速选择 (必填)</span>
+                    <em>此项为必选！</em>
+                </dt>
+                <dd>已处理</dd>
+                <dd>问题虚报</dd>
+                <dd>延后一小时处理</dd>
+                <dd>延后三小时处理</dd>
+                <dd>延后一天处理</dd>
+                <dd>延后三天处理</dd>
+            </dl>
+            <dl>
+                <dt>
+                    <span>详细描述 (选填)</span>
+                </dt>
+                <dd class="text">
+                    <textarea placeholder="请描述处理结果"></textarea>
+                </dd>
+            </dl>
+            <div class="submitWrap clear">
+                <span class="btn blue">提交处理结果</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <ul>
+            <li style="width:50%" onclick="window.location.href='index.html'"><em>社区动态</em></li>
+            <li style="width:50%"><em class="active">控制台</em></li>
+        </ul>
+
+        <div style="display:none;width:30%;background-color:#fff;position:absolute;z-index:200;top:-2.5rem;right:.8rem;" align="center" id="showMenu">
+            <div style="border-bottom:1px solid #000;" onclick="window.location.href='AlertSummary.html'">告警管理</div>
+            <div style="border-bottom:1px solid #000;" onclick="window.location.href='Alert.html'">告警列表</div>
+            <div style="border-bottom:1px solid #000;" onclick="window.location.href='WorkorderCreator.html'">上报情况</div>
+        </div>
+        <!--<ul>
+            <li>
+                <span class="icon">
+                    <img src="Images/footer-icon1-on.png" />
+                </span>
+                <em class="active">控制台</em>
+            </li>
+            <li>
+                <span class="icon">
+                    <img src="Images/footer-icon2.png" />
+                </span>
+                <em>小区介绍</em>
+            </li>
+        </ul>-->
+    </footer>
+
+</body>
+<script src="JS/jquery-2.1.3.min.js"></script>
+<script>
+    var iScale = 1;
+    iScale = iScale / window.devicePixelRatio;
+    document.write('<meta name="viewport" content="width=device-width, initial-scale=' + iScale + ',minimum-scale=' + iScale + ',maximum-scale=' + iScale + ',user-scalable=no" />')
+    var iWidth = document.documentElement.clientWidth;
+    document.getElementsByTagName('html')[0].style.fontSize = iWidth / 7.5 + 'px';
+
+    var areaWarn = {
+        footerTabIcon: ["Images/footer-icon1.png", "Images/footer-icon2.png", "Images/footer-icon3.png"],
+        footerTabIconOn: ["Images/footer-icon1-on.png", "Images/footer-icon2-on.png", "Images/footer-icon3-on.png"],
+        infoList: function () {
+            var flag = true;
+            $(".infoList dt").on('touchstart', function () {
+                if (flag) {
+                    $(this).siblings().hide().end().find('i').removeClass('fa-chevron-down').addClass('fa-chevron-right');
+                    flag = false;
+                } else {
+                    $(this).siblings().show().end().find('i').removeClass('fa-chevron-right').addClass('fa-chevron-down');
+                    flag = true;
+                }
+            })
+        },
+        footerTab: function () {
+            $('footer li').on('touchstart', function () {
+                if ($("#showMenu").is(':hidden')) {
+                    $('#showMenu').show();
+                } else {
+                    $('#showMenu').hide();
+                }
+            })
+        },
+        navBarSelect: function () {
+            $('.nav li').on('touchstart', function () {
+                $(this).children('span').addClass('cur').end().siblings().children('span').removeClass('cur');
+                //$('.taskList').eq($(this).index()).show().siblings('.taskList').hide();
+                ViewList();
+            })
+        },
+        alertResultSelect: function () {
+            $('.warnDesForm .select dd').on('touchstart', function () {
+                $(this).addClass('on').siblings().removeClass('on');
+                var arrState = [905, 902, 906, 907, 908, 909];
+                relieveCode = arrState[$(this).index() - 1];
+
+            })
+        }
+    }
+    areaWarn.infoList();
+    areaWarn.footerTab();
+    areaWarn.navBarSelect();
+    areaWarn.alertResultSelect();
+
+    //var listHtml1 = "";
+    //var listHtml2 = "";
+    //var listHtml3 = "";
+    var detailHtml = "";
+    var sequenceno = 0;
+    var relieveCode = 902;
+    var relieveRemark = "";
+
+    $(function () {
+        ViewList();
+    });
+
+    function ViewList() {
+        $('.taskList').empty();
+        var id = $('.cur').attr('id');
+        $.ajax({
+            type: 'GET',
+            url: 'http://ShCommunity.LeanLoop.net:8000/v1/alerts/zte_002/1104?state=' + id + '',
+            data: {
+                userId: 'alertuser',
+                password: 'alert20180320'
+            },
+            dataType: 'JSON',
+            beforeSend: function () {
+
+            },
+            success: function (data) {
+               // console.log(data);
+                $.each(data, function (i, ele) {
+                    var location = ele.resultModel.location.pop();
+                    if (location == '') {
+                        location = '未显示地址';
+                    }
+                    var img = 'Images/elevator.png';
+                    switch (ele.relieveCode){
+                        case (902):
+                        case (905):
+                            img='Images/electricCar.png';
+                            break;
+                        case (906):
+                        case (907):
+                        case (908):
+                        case (909):
+                            img = 'Images/old.png';
+                            break;
+                    }
+                    var listHtml = `<li data-sequenceNo=${ele.sequenceNo}>
+        							<img src="${img}" alt="">
+        							<div class="info">
+                                        <p><span>${ele.alertText}</span></p>
+        								<p>
+        									<span>${location}</span>
+        								</p>
+
+        								<p>
+        									<span>ID:${ele.alertSourceRefNo}</span>
+
+        									<span>${ele.alertTime.substring(0, ele.alertTime.length - 1).replace('T', ' ')}</span>
+        								</p>
+        							</div>
+        							<span class="btn">查看详情</span>
+        				</li> `;
+                        $('.taskList').append(listHtml);
+                });
+                
+
+                /*
+                $.each(data, function (i, ele) {
+                    if (ele.relieveCode == 0) {
+                        var location1 = ele.resultModel.location.pop();
+                        if (location1 == '') {
+                            listHtml1 += `<li data-sequenceNo=${ele.sequenceNo}>
+        							<img src="Images/elevator.png" alt="">
+        							<div class="info">
+                                        <p><span>${ele.alertText}</span></p>
+        								<p>
+        									<span>未显示地址</span>
+        								</p>
+
+        								<p>
+        									<span>ID:${ele.alertSourceRefNo}</span>
+
+        									<span>${ele.alertTime.substring(0, ele.alertTime.length - 1).replace('T', ' ')}</span>
+        								</p>
+        							</div>
+        							<span class="btn">查看详情</span>
+        				</li>`} else {
+                            listHtml1 += `<li data-sequenceNo=${ele.sequenceNo}>
+        							<img src="Images/elevator.png" alt="">
+        							<div class="info">
+                                        <p><span>${ele.alertText}</span></p>
+        								<p>
+        									<span>${location1}</span>
+        								</p>
+
+        								<p>
+        									<span>ID:${ele.alertSourceRefNo}</span>
+        									<span>${ele.alertTime.substring(0, ele.alertTime.length - 1).replace('T', ' ')}</span>
+        								</p>
+        							</div>
+        							<span class="btn">查看详情</span>
+        				</li>`
+                        }
+                    } else if (ele.relieveCode == 904 || ele.relieveCode == 906 || ele.relieveCode == 907 || ele.relieveCode == 908 || ele.relieveCode == 909 || ele.relieveCode == 920) {
+                        var location2 = ele.resultModel.location.pop();
+                        if (location == '') {
+
+                            listHtml2 += `<li class="yellow" data-sequenceNo=${ele.sequenceNo}>
+        							<img src="Images/old.png" alt="">
+        							<div class="info">
+										<p><span>${ele.alertText}</span></p>
+        								<p>
+        									<span>未显示地址</span>
+        								</p>
+        								<p>
+        									<span>ID:${ele.alertSourceRefNo}</span>
+        									<span>${ele.alertTime.substring(0, ele.alertTime.length - 1).replace('T', ' ')}</span>
+        								</p>
+        							</div>
+        							<span class="btn">查看详情</span>
+        				</li>`} else {
+                            listHtml2 += `<li class="yellow" data-sequenceNo=${ele.sequenceNo}>
+        							<img src="Images/old.png" alt="">
+        							<div class="info">
+										<p><span>${ele.alertText}</span></p>
+        								<p>
+        									<span>${location2}</span>
+        								</p>
+        								<p>
+        									<span>ID:${ele.alertSourceRefNo}</span>
+        									<span>${ele.alertTime.substring(0, ele.alertTime.length - 1).replace('T', ' ')}</span>
+        								</p>
+        							</div>
+        							<span class="btn">查看详情</span>
+        				</li>`
+
+                        }
+                    } else if (ele.relieveCode == 901 || ele.relieveCode == 902 || ele.relieveCode == 903 || ele.relieveCode == 905) {
+                        var location3 = ele.resultModel.location.pop();
+                        if (location == '') {
+
+                            listHtml3 += `<li class="red" data-sequenceNo=${ele.sequenceNo}>
+        							<img src="Images/electricCar.png" alt="">
+        							<div class="info">
+										<p><span>${ele.alertText}</span></p>
+        								<p>
+        									<span>未显示地址</span>
+        								</p>
+        								<p>
+        									<span>ID:${ele.alertSourceRefNo}</span>
+        									<span>${ele.relieveTime.substring(0, ele.relieveTime.length - 1).replace('T', ' ')}</span>
+        								</p>
+        							</div>
+        							<span class="btn">查看详情</span>
+        				</li>`
+                            $('.submitWrap .btn').hide();
+                            $('.warnDesForm textarea').attr('readonly', 'readonly');
+                        } else {
+                            listHtml3 += `<li class="red" data-sequenceNo=${ele.sequenceNo}>
+        							<img src="Images/electricCar.png" alt="">
+        							<div class="info">
+										<p><span>${ele.alertText}</span></p>
+        								<p>
+        									<span>${location3}</span>
+        								</p>
+        								<p>
+        									<span>ID:${ele.alertSourceRefNo}</span>
+        									<span>${ele.relieveTime.substring(0, ele.relieveTime.length - 1).replace('T', ' ')}</span>
+        								</p>
+        							</div>
+        							<span class="btn">查看详情</span>
+        				</li>`
+                        }
+                    }
+                });
+                $('.taskList').eq(0).html(listHtml1);
+                $('.taskList').eq(1).html(listHtml2);
+                $('.taskList').eq(2).html(listHtml3);
+                */
+
+                $('.taskList li').on('click', function () {
+                    var num = $(this).data('sequenceno');
+                    window.location.href = 'AlertDetail.html?SequenceNo=' + num + '';
+                })
+            }
+        });
+    }
+
+    //警报处置
+    $('.submitWrap .btn').on('touchstart', function () {
+        relieveRemark = $('textarea').val();
+        var self = $(this);
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            url: 'http://ShCommunity.LeanLoop.net:8000/v1/Alerts/ZTE_002/1104/' + sequenceno + '',
+            data: JSON.stringify({
+                "sequenceNo": sequenceno,
+                "relieveRemark": relieveRemark,
+                "relieveTime": GetNowTime(),
+                "relieveCode": relieveCode
+            }),
+            success: function (data) {
+                alert("提交成功");
+                self.html("您已提交").unbind();
+                window.location.href = 'Alert.html';
+            }
+        });
+    })
+    //取得当天时间(yyyy-MM-dd hh:mm:ss)
+    function GetNowTime() {
+        var nowDate = new Date();
+        var str = nowDate.getFullYear() + "-" + NumToString(nowDate.getMonth() + 1) + "-" + NumToString(nowDate.getDate()) + "T" + NumToString(nowDate.getHours()) + ":" + NumToString(nowDate.getMinutes()) + ":" + NumToString(nowDate.getSeconds());
+        return str;
+    }
+    function NumToString(num) {
+        if (num < 10) {
+            return "0" + num;
+        } else {
+            return num;
+        }
+    }
+</script>
+</html>

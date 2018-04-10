@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>告警明细</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=yes">
+    <link rel="stylesheet" type="text/css" href="CSS/warn.css">
+
+</head>
+
+<body>
+    <section class="warnDes" style="display: none;">
+        <div class="con" id="detail"></div>
+        <div class="con">
+            <dl id="users" style="display:none">
+                <dt>处理信息</dt>
+                <dd><em>处理人：</em><span></span></dd>
+                <dd><em>处理时间：</em><span></span></dd>
+            </dl>
+        </div>
+        <div class="warnDesForm">
+            <dl class="select clear">
+                <dt>
+                    <span>快速选择 (必填)</span>
+                    <!--<em>此项为必选！</em>-->
+                </dt>
+                <dd>立即处理</dd>
+                <dd>问题虚报</dd>
+                <dd>处理完毕</dd>
+
+
+                <!--<dd>延后三小时处理</dd>
+                <dd>延后一天处理</dd>
+                <dd>延后三天处理</dd>-->
+            </dl>
+
+            <dl>
+                <dt>
+                    <span>详细描述 (选填)</span>
+                </dt>
+                <dd class="text">
+                    <textarea placeholder="请描述处理结果"></textarea>
+                    <!-- <div class="camera"></div> -->
+                    <a href="javascript:;" class="upload" style="display:none;">
+                        <input id="upload" class="camera" type="file" accept="image/*;" capture="camera">
+                    </a>
+                </dd>
+            </dl>
+            <dl id="uploadPic" style="display:none">
+                <dt>
+                    <span>上传照片</span>
+                </dt>
+                <dd class="text" style="height:1.0rem">
+                    <div>
+                        <img class="material-input-user" src="images/add.png" onclick="$('#capture').click()">
+                        <input style="display:none;" type="file" accept="image/*" id="capture" capture="camera">
+                    </div>
+                </dd>
+            </dl>
+            <dl id="uploads" style="display:none">
+                <!--<div style="width:100%;padding-bottom:0.3rem"><div style="font-size:0.2rem;float:right" class="delPic">X</div><img src="images/banner.png"  style="width:100%"></div>
+                <div style="width:100%;padding-bottom:0.3rem"><div style="font-size:0.2rem;float:right" class="delPic">X</div><img src="images/banner1.png" style="width:100%"></div>-->
+            </dl>
+
+            <dl id="imgs" style="display:none"></dl>
+        </div>
+    </section>
+</body>
+</html>
+<script src="JS/jquery-2.1.3.min.js"></script>
+<script src="JS/warn.js"></script>
+<script type="text/javascript" src="js/compress.js"></script>
+<script>
+    var alertSourceRefNo = '';
+    var relieveCode = 0;
+    var relieveResult = "";
+    var id = 0;
+    var itemIndex = 0;
+    var get_openId = getUrlParam('openId');    // openId
+    if (get_openId) {
+        window.localStorage.setItem('openId', get_openId);
+    } else {
+        get_openId = window.localStorage.getItem('openId');
+    }
+
+    $('.warnDesForm .select dd').on('touchstart', function () {
+        $(this).addClass('on').siblings().removeClass('on');
+        var arrState = [906, 902, 905, 907, 908, 909];
+        relieveCode = arrState[$(this).index() - 1];
+    })
+
+
+
+    id = getUrlParam("SequenceNo");
+    var detailHtml = "";
+    var detailHtml1 = "";
+    $.ajax({
+        type: 'GET',
+        url: 'http://shcommunity.leanloop.net:8000/v1/alerts/zte_002/1104/' + id + '',
+        data: {
+            userId: 'alertuser',
+            password: 'alert20180320'
+        },
+        dataType: 'JSON',
+        success: function (data) {
+            $('.warnDes').show();
+            var data = data[0];
+            sequenceNo = data.sequenceNo;
+            alertSourceRefNo = data.alertSourceRefNo;
+            relieveCode = data.relieveCode;
+            var area = "";
+            if (data.resultModel.location) {
+                var locations = data.resultModel.location;
+                for (var i = 0; i < locations.length; i++) {
+                    area += locations[i] + ' ';
+                }
+            } else {
+                area = data.resultModel.community.pop();
+            }
+            detailHtml = `<dl>
+									<dt>告警详情</dt>
+									<dd><em>告警ID：</em><span>${data.alertSourceRefNo}</span></dd>
+									<dd><em>告警类型：</em><span>${data.alertKindName}</span></dd>
+									<dd><em>告警时间：</em><span>${data.alertTime.substring(0, data.alertTime.length - 1).replace('T', ' ')}</span></dd>
+									<dd><em>告警级别：</em><span id="warnType-span">${data.alertLevel}</span>级</dd>
+									<dd class="clear"><em class="fl">告警内容：</em><p class="fl">${data.alertText}</p></dd>
+									<dd><em>告警设备：</em><span>${data.alertSource}</span></dd>
+									<dd><em>告警位置：</em><span>${area}</span></dd>
+							</dl>`;
+            if (data.resultModel.contacts) {
+                if (data.resultModel.contacts.length > 0) {
+                    detailHtml += `<dl>
+									<dt>当事人信息</dt>
+									<dd><em>业主姓名：</em><span>王先生</span></dd>
+									<dd><em>联系方式：</em><a href="tel:18688888888">13800138000</a><i class="tel"></i></dd>
+							</dl>`;
+                }
+            }
+            $('.warnDes #detail').html(detailHtml);
+
+
+
+            //     if (`${data.resultModel.community.pop()}` == '') {
+            //         detailHtml = `<dl>
+            //		<dt>告警详情</dt>
+            //		<dd><em>告警ID：</em><span>${data.alertSourceRefNo}</span></dd>
+            //		<dd><em>告警类型：</em><span>${data.alertKindName}</span></dd>
+            //		<dd><em>告警时间：</em><span>${new Date(data.alertTime).toLocaleString()}</span></dd>
+            //		<dd><em>告警级别：</em><span id="warnType-span">${data.alertLevel}</span>级</dd>
+            //		<dd class="clear"><em class="fl">告警内容：</em><span class="fl">${data.alertText}</span></dd>
+            //		<dd><em>告警来源：</em><span>${data.alertSource}</span></dd>
+            //		<dd><em>警报位置：</em><span>未显示小区</span></dd>
+            //</dl>
+            //<dl>
+            //		<dt>业主信息</dt>
+            //		<dd><em>业主姓名：</em><span>王先生</span></dd>
+            //		<dd><em>联系方式：</em><a href="tel:18688888888">13800138000</a><i class="tel"></i></dd>
+            //</dl>`;
+            //         $('.warnDes #detail').html(detailHtml);
+            //     } else {
+            //         detailHtml = `<dl>
+            //		<dt>告警详情</dt>
+            //		<dd><em>告警ID：</em><span>${data.alertSourceRefNo}</span></dd>
+            //		<dd><em>告警类型：</em><span>${data.alertKindName}</span></dd>
+            //		<dd><em>告警时间：</em><span>${data.alertTime.substring(0, data.alertTime.length - 1).replace('T', ' ')}</span></dd>
+            //		<dd><em>告警级别：</em><span id="warnType-span">${data.alertLevel}</span>级</dd>
+            //		<dd class="clear"><em class="fl">告警内容：</em><p class="fl">${data.alertText}</p></dd>
+            //		<dd><em>告警来源：</em><span>${data.alertSource}</span></dd>
+            //		<dd><em>警报位置：</em><span>${area}</span></dd>
+            //</dl>
+            //<dl>
+            //		<dt>业主信息</dt>
+            //		<dd><em>业主姓名：</em><span>王先生</span></dd>
+            //		<dd><em>联系方式：</em><a href="tel:18688888888">13800138000</a><i class="tel"></i></dd>
+            //</dl>`;
+            //         $('.warnDes #detail').html(detailHtml);
+            //     }
+            var remark = '';
+            if (data.relieveResult) {
+                remark = data.relieveResult.remark;
+                if (data.relieveResult.contactName) {
+                    $('#users').show();
+                    $('#users').find('span').eq(0).text(data.relieveResult.contactName);
+                    $('#users').find('span').eq(1).text(data.relieveTime.replace('T', ' ').replace('Z', ' '));
+                }
+                if (data.relieveResult.urls) {
+                    if (data.relieveResult.urls.length > 0) {
+                        $('#imgs').show();
+                        for (var i = 0; i < data.relieveResult.urls.length; i++) {
+                            var url = data.relieveResult.urls[i];
+                            var strs = url.split('/');
+                            $('#imgs').append('<div style="width:100%"><img src="' + url + '" id= "' + strs[strs.length - 1] + '" style="width:100%"></div>');
+                        }
+                    }
+                }
+            }
+            if (data.relieveCode == 905 || data.relieveCode == 902) {//处理完毕
+                $('#uploads').hide();
+                $('#uploadPic').hide();
+                $('.submitWrap .btn').hide();
+                $('.warnDesForm textarea').attr('readonly', 'readonly');
+                $('.warnDesForm .select dd').unbind();
+                $('.warnDesForm textarea').val(remark);
+                $('.warnDesForm dt').eq(0).text('处理状态').end().eq(1).html('详细描述');
+                if (data.relieveCode == 905) $('.warnDesForm .select dd').removeClass('on').eq(2).addClass('on');
+                else if (data.relieveCode == 902) $('.warnDesForm .select dd').removeClass('on').eq(1).addClass('on');
+
+            } else {
+                if (get_openId) {
+                    $('.submitWrap .btn').show();
+                }
+                $('.warnDesForm textarea').val(remark);
+                if (data.relieveCode >= 906) $('.warnDesForm .select dd').removeClass('on').eq(0).addClass('on');
+                //else if(data.relieveCode == 907) $('.warnDesForm .select dd').unbind().removeClass('on').eq(3).addClass('on');
+                //else if(data.relieveCode == 908) $('.warnDesForm .select dd').unbind().removeClass('on').eq(4).addClass('on');
+                //else if(data.relieveCode == 909) $('.warnDesForm .select dd').unbind().removeClass('on').eq(5).addClass('on');
+            }
+            $('.warnDesForm textarea').attr('readonly', 'readonly');
+            $('.warnDesForm .select dd').unbind();
+        }
+    });
+    //提交数据
+    $('.submitWrap .btn').on('touchstart', function () {
+        if (get_openId) {
+            if (relieveCode == 0) {
+                alert('请选择处理结果！');
+                return;
+            }
+            if ($('.select dd').hasClass('on')) {
+
+                relieveResult = $('textarea').val();
+                var self = $(this);
+                var json = {};
+                json.sequenceNo = sequenceNo;
+                json.relieveRemark = relieveResult;
+                json.relieveTime = GetNowTime();
+                json.relieveCode = relieveCode;
+                json.openId = get_openId;
+                var relieveUrls = [];
+                $('#uploads img').each(function () {
+                    relieveUrls.push($(this).attr('id'));
+                })
+                $('#imgs img').each(function () {
+                    relieveUrls.push($(this).attr('id'));
+                })
+                json.relieveUrls = relieveUrls;
+                console.log(JSON.stringify(json));
+
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'JSON',
+                    async: false,
+                    url: 'http://ShCommunity.LeanLoop.net:8000/v1/Alerts/ZTE_002/1104/' + sequenceNo + '',
+                    data: JSON.stringify(json),
+                    success: function (data) {
+                        //sequenceno = data.sequenceNo;
+                        alert("提交成功");
+                        self.html("您已提交").unbind();
+                        window.location.href = 'Alert.html';
+                        // window.location = 'Alert.html';
+                    }
+                });
+            } else {
+                $('.warnDesForm dt em').css('fontWeight', 'bold');
+            }
+        }
+    })
+    //取得当天时间(yyyy-MM-dd hh:mm:ss)
+    function GetNowTime() {
+        var nowDate = new Date();
+        var str = nowDate.getFullYear() + "-" + NumToString(nowDate.getMonth() + 1) + "-" + NumToString(nowDate.getDate()) + "T" + NumToString(nowDate.getHours()) + ":" + NumToString(nowDate.getMinutes()) + ":" + NumToString(nowDate.getSeconds());
+        return str;
+    }
+    function NumToString(num) {
+        if (num < 10) {
+            return "0" + num;
+        } else {
+            return num;
+        }
+    }
+    //获取url中的参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        //  if (r != null) return unescape(r[2]); return null; //返回参数值  (解析中文参数时候出现乱码)
+        if (r != null) {//返回参数值
+            var str = r[2];
+            return decodeURI(str);
+        } else {
+            return null;
+        }
+    }
+
+    /*上传图片*/
+    $(document).on('change', '#capture', function () {
+        if ($(this).val().length > 0) {
+            var file = filechooser(this, alertSourceRefNo);
+            //console.log(file)
+            return false; // 阻止表单自动提交事件
+        }
+    });
+    /*上传图片*/
+    $(document).on('click', '.delPic', function () {
+        $(this).parent().remove();
+        if ($('#uploads img').length == 0) $('#uploads').hide();
+    });
+
+</script>
